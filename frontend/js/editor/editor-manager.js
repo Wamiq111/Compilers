@@ -61,6 +61,7 @@ export class EditorManager {
         if (path.endsWith('.html')) lang = 'html';
         else if (path.endsWith('.css')) lang = 'css';
         else if (path.endsWith('.js')) lang = 'javascript';
+        else if (path.endsWith('.py')) lang = 'python';
 
         if (!this.models[path]) {
             this.models[path] = this.monaco.editor.createModel(content, lang);
@@ -78,7 +79,8 @@ export class EditorManager {
         return {
             html: this.vfs.getFileContent('index.html') || '',
             css: this.vfs.getAllFilesExt('.css'),
-            javascript: this.vfs.getAllFilesExt('.js')
+            javascript: this.vfs.getAllFilesExt('.js'),
+            python: this.vfs.getAllFilesExt('.py')
         };
     }
 

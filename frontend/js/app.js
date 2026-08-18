@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     function runCode() {
         const sources = editorManager.getSources();
         consoleUI.clear();
-        previewManager.buildPreview(sources.html, sources.css, sources.javascript);
+        previewManager.buildPreview(sources.html, sources.css, sources.javascript, sources.python);
         stopBtn.disabled = false;
     }
 
@@ -99,8 +99,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Trigger initial renders
     vfs.notify();
-    editorManager.openFile('index.html');
+    editorManager.openFile(vfs.activeFile);
     runCode();
+
+    const langSelector = document.getElementById('lang-selector');
+    if (langSelector) {
+        langSelector.addEventListener('change', (e) => {
+            const mode = e.target.value;
+            vfs.reset(mode);
+            editorManager.openFile(vfs.activeFile);
+            runCode();
+        });
+    }
 
     window.appState = { vfs, editorManager, previewManager, consoleUI, sidebarUI };
 });

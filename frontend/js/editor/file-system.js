@@ -1,19 +1,29 @@
 export class VirtualFileSystem {
     constructor() {
+        this.listeners = [];
+        this.reset('web');
+    }
+
+    reset(mode) {
         this.root = {
             name: 'project',
             type: 'folder',
             children: {}
         };
-        this.activeFile = null;
-        this.listeners = [];
 
-        // Defaults
-        this.addFile('index.html', '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>My Page</title>\n</head>\n<body>\n    <h1>Hello World</h1>\n</body>\n</html>');
-        this.addFile('style.css', 'body {\n    font-family: sans-serif;\n    padding: 2rem;\n}\nh1 {\n    color: #007acc;\n}');
-        this.addFile('script.js', 'console.log("Hello from JavaScript!");\nconsole.warn("This is a warning.");\nconsole.error("This is an error.");');
+        if (mode === 'web') {
+            this.addFile('index.html', '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>My Page</title>\n</head>\n<body>\n    <h1>Hello World</h1>\n</body>\n</html>');
+            this.addFile('style.css', 'body {\n    font-family: sans-serif;\n    padding: 2rem;\n}\nh1 {\n    color: #007acc;\n}');
+            this.addFile('script.js', 'console.log("Hello from JavaScript!");\nconsole.warn("This is a warning.");\nconsole.error("This is an error.");');
+            this.activeFile = 'index.html';
+        } else if (mode === 'python') {
+            this.addFile('main.py', 'print("Hello from Python!")');
+            this.activeFile = 'main.py';
+        }
 
-        this.activeFile = 'index.html';
+        if (this.listeners && this.listeners.length > 0) {
+            this.notify();
+        }
     }
 
     onChange(listener) {
