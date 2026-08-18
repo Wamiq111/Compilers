@@ -1,0 +1,23 @@
+/* Footer / Status Bar */
+.app-footer {
+    height: 25px;
+    background-color: var(--bg-header);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.app-footer .footer-right a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 15px;
+    transition: color 0.15s;
+}
+
+.app-footer .footer-right a:hover {
+    color: var(--text-highlight);
+}

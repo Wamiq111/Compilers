@@ -1,0 +1,36 @@
+/* Mobile and tablet mode */
+@media (max-width: 768px) {
+    .app-workspace {
+        flex-direction: column;
+    }
+
+    .resizer-h {
+        display: none;
+        /* remove horizontal resizer on mobile */
+    }
+
+    /* Stack editor and preview on mobile */
+    .editor-pane {
+        flex: 1 1 50%;
+        width: 100%;
+    }
+
+    .right-pane {
+        flex: 1 1 50%;
+        width: 100%;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .header-actions .btn {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .tab {
+        padding: 6px 10px;
+    }
+}

@@ -1,0 +1,146 @@
+/* Buttons */
+.btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 4px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    transition: background-color var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:hover:not(:disabled) {
+    background-color: var(--btn-bg-hover);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background-color: var(--btn-primary-bg);
+    color: #ffffff;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--btn-primary-hover);
+}
+
+.btn-danger {
+    background-color: var(--btn-danger-bg);
+    color: #ffffff;
+}
+
+.btn-danger:hover:not(:disabled) {
+    background-color: var(--btn-danger-hover);
+}
+
+.btn-small {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Tabs */
+.editor-tabs {
+    display: flex;
+    gap: 2px;
+    height: 100%;
+    align-items: flex-end;
+}
+
+.tab {
+    padding: 8px 16px;
+    background-color: var(--tab-bg);
+    color: var(--text-base);
+    font-size: 0.85rem;
+    border-radius: 4px 4px 0 0;
+    border-top: 2px solid transparent;
+    transition: background-color var(--transition-fast);
+}
+
+.tab:hover {
+    background-color: var(--tab-hover-bg);
+}
+
+.tab.active {
+    background-color: var(--tab-active-bg);
+    border-top-color: var(--tab-border);
+    font-weight: 600;
+}
+
+/* Toggle Switch */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    margin-left: 12px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 18px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--text-muted);
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--btn-primary-bg);
+}
+
+input:checked+.slider:before {
+    transform: translateX(16px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Checkbox */
+.checkbox-label {
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}

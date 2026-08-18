@@ -1,0 +1,75 @@
+:root {
+    --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: 'Fira Code', 'Consolas', 'Courier New', monospace;
+    --resizer-size: 6px;
+    --header-height: 55px;
+
+    /* Animation Tokens */
+    --transition-fast: 0.2s ease;
+}
+
+/* Dark Theme */
+.theme-dark {
+    --bg-body: #1e1e1e;
+    --bg-header: #252526;
+    --bg-panel: #1e1e1e;
+    --bg-console: #1e1e1e;
+    --border-color: #333333;
+
+    --text-base: #cccccc;
+    --text-muted: #888888;
+    --text-highlight: #4daafc;
+    --text-error: #f48771;
+    --text-warn: #cca700;
+    --text-info: #75beff;
+    --text-success: #89d185;
+
+    --resizer-bg: #333333;
+    --resizer-hover: #007acc;
+
+    --btn-bg: #3a3d41;
+    --btn-bg-hover: #4d5157;
+    --btn-text: #cccccc;
+    --btn-primary-bg: #0e639c;
+    --btn-primary-hover: #1177bb;
+    --btn-danger-bg: #c0392b;
+    --btn-danger-hover: #d35400;
+
+    --tab-bg: #2d2d2d;
+    --tab-active-bg: #1e1e1e;
+    --tab-border: #007acc;
+    --tab-hover-bg: #333333;
+}
+
+/* Light Theme */
+.theme-light {
+    --bg-body: #f8f9fa;
+    --bg-header: #ffffff;
+    --bg-panel: #ffffff;
+    --bg-console: #ffffff;
+    --border-color: #e0e0e0;
+
+    --text-base: #333333;
+    --text-muted: #666666;
+    --text-highlight: #0066cc;
+    --text-error: #cc0000;
+    --text-warn: #b8860b;
+    --text-info: #005c99;
+    --text-success: #107c10;
+
+    --resizer-bg: #e0e0e0;
+    --resizer-hover: #007acc;
+
+    --btn-bg: #f0f0f0;
+    --btn-bg-hover: #e4e4e4;
+    --btn-text: #333333;
+    --btn-primary-bg: #007acc;
+    --btn-primary-hover: #005999;
+    --btn-danger-bg: #e74c3c;
+    --btn-danger-hover: #c0392b;
+
+    --tab-bg: #f3f3f3;
+    --tab-active-bg: #ffffff;
+    --tab-border: #007acc;
+    --tab-hover-bg: #ebebeb;
+}
