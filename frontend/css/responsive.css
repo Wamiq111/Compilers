@@ -1,29 +1,75 @@
 /* Mobile and tablet mode */
 @media (max-width: 768px) {
-    .app-workspace {
-        flex-direction: column;
+    .app-container {
+        height: auto;
+        min-height: 100vh;
     }
 
-    .resizer-h {
+    .app-workspace {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .activity-bar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-top: 0;
+        justify-content: space-evenly;
+    }
+
+    .activity-action {
+        width: auto;
+        flex: 1;
+        height: 48px;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+    }
+
+    .activity-action.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--text-highlight);
+    }
+
+    .sidebar-pane {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+        max-height: 250px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .resizer-h,
+    .resizer-v {
         display: none;
-        /* remove horizontal resizer on mobile */
     }
 
     /* Stack editor and preview on mobile */
     .editor-pane {
-        flex: 1 1 50%;
+        flex: none;
         width: 100%;
+        min-height: 50vh;
     }
 
     .right-pane {
-        flex: 1 1 50%;
+        flex: none;
         width: 100%;
+        min-height: 50vh;
         border-top: 1px solid var(--border-color);
+    }
+
+    .header-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
     }
 
     .header-actions .btn {
         padding: 4px 8px;
         font-size: 0.75rem;
+        margin: 2px;
     }
 
     .logo {
