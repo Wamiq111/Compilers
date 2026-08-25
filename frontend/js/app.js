@@ -89,13 +89,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const langSelector = document.getElementById('lang-selector');
 
-    // Parse URL parameter to initialize the correct language workspace
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialLang = urlParams.get('lang');
-    if (initialLang && langSelector) {
-        langSelector.value = initialLang;
-        vfs.reset(initialLang);
+    // Parse URL path to initialize the correct language workspace
+    let initialLang = 'web';
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('python-compiler') || urlParams.get('lang') === 'python') {
+        initialLang = 'python';
+    } else if (currentPath.includes('html-compiler') || urlParams.get('lang') === 'web') {
+        initialLang = 'web';
     }
+
+    if (langSelector) {
+        langSelector.value = initialLang;
+    }
+    vfs.reset(initialLang);
 
     // Trigger initial renders
     vfs.notify();
@@ -105,6 +111,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (langSelector) {
         langSelector.addEventListener('change', (e) => {
             const mode = e.target.value;
+            const newSlug = mode === 'python' ? '/python-compiler' : '/html-compiler';
+            window.history.pushState({}, '', newSlug);
             vfs.reset(mode);
             editorManager.openFile(vfs.activeFile);
             runCode();
