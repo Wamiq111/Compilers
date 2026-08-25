@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Compiler IDE</title>
+    <title>Privacy | CompilerIDE</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css">
@@ -15,12 +15,19 @@
     <nav class="page-nav">
         <a href="index.html" class="logo menu-link">Compiler<span class="highlight">IDE</span></a>
         <div class="page-nav-links">
-            <a href="about.html" class="menu-link">About Us</a>
-            <a href="contact.html" class="menu-link">Contact Us</a>
+            <a href="index.html" class="menu-link">Home</a>
+            <a href="about.html" class="menu-link">About</a>
+            <a href="contact.html" class="menu-link">Contact</a>
             <a href="privacy.html" class="menu-link active">Privacy</a>
             <a href="terms.html" class="menu-link">Terms</a>
             <a href="advertise.html" class="menu-link">Advertise</a>
-            <a href="index.html" class="btn-editor menu-link">Open Editor</a>
+            <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme">
+                <svg class="theme-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
+                </svg>
+            </button>
+            <a href="compiler.html" class="btn-editor menu-link">Open Editor</a>
         </div>
     </nav>
     <div class="page-container">
@@ -45,6 +52,20 @@
         <p>We reserve the right to modify this privacy policy at any time. Changes will be reflected directly on this
             page instantly. We recommend checking back periodically to stay informed.</p>
     </div>
+    <footer class="page-footer">
+        <div class="footer-left">
+            <span>&copy; 2026 CompilerIDE. All rights reserved.</span>
+        </div>
+        <div class="footer-right">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="advertise.html">Advertise</a>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
 </body>
 
 </html>

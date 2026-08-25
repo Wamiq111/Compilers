@@ -43,18 +43,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         consoleUI.clear();
     });
 
-    const themeSwitch = document.getElementById('theme-switch');
-    themeSwitch.addEventListener('change', (e) => {
-        const isDark = e.target.checked;
-        if (isDark) {
-            document.body.classList.remove('theme-light');
-            document.body.classList.add('theme-dark');
-        } else {
-            document.body.classList.remove('theme-dark');
-            document.body.classList.add('theme-light');
-        }
-        editorManager.setTheme(isDark);
-    });
+    // Theme toggle is managed globally by js/theme.js
+
 
     document.getElementById('btn-format').addEventListener('click', () => {
         editorManager.format();
@@ -97,12 +87,21 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     initResizers();
 
+    const langSelector = document.getElementById('lang-selector');
+
+    // Parse URL parameter to initialize the correct language workspace
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialLang = urlParams.get('lang');
+    if (initialLang && langSelector) {
+        langSelector.value = initialLang;
+        vfs.reset(initialLang);
+    }
+
     // Trigger initial renders
     vfs.notify();
     editorManager.openFile(vfs.activeFile);
     runCode();
 
-    const langSelector = document.getElementById('lang-selector');
     if (langSelector) {
         langSelector.addEventListener('change', (e) => {
             const mode = e.target.value;
@@ -113,6 +112,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     window.appState = { vfs, editorManager, previewManager, consoleUI, sidebarUI };
+
+    // Safety: ensure file tree renders after all async init completes
+    requestAnimationFrame(() => vfs.notify());
 });
 
 function initResizers() {

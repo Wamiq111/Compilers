@@ -37,6 +37,8 @@ export class SidebarUI {
             this.switchView('explorer');
             document.querySelectorAll('.activity-action').forEach(b => b.classList.remove('active'));
             expl.classList.add('active');
+            // Force re-render the tree when switching to Explorer
+            this.renderTree(this.vfs.root, this.vfs.activeFile);
         });
         srch.addEventListener('click', () => {
             this.switchView('search');

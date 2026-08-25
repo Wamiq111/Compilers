@@ -51,5 +51,6 @@ export function getFileIcon(name) {
     if (name.endsWith('.html')) return Icons.fileHtml;
     if (name.endsWith('.css')) return Icons.fileCss;
     if (name.endsWith('.js')) return Icons.fileJs;
+    if (name.endsWith('.py')) return Icons.file; // Fallback to standard file icon, but we can customize later if we add a python SVG
     return Icons.file;
 }

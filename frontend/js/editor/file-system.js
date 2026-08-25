@@ -12,9 +12,9 @@ export class VirtualFileSystem {
         };
 
         if (mode === 'web') {
-            this.addFile('index.html', '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>My Page</title>\n</head>\n<body>\n    <h1>Hello World</h1>\n</body>\n</html>');
-            this.addFile('style.css', 'body {\n    font-family: sans-serif;\n    padding: 2rem;\n}\nh1 {\n    color: #007acc;\n}');
-            this.addFile('script.js', 'console.log("Hello from JavaScript!");\nconsole.warn("This is a warning.");\nconsole.error("This is an error.");');
+            this.addFile('index.html', '<!DOCTYPE html>\n<html lang="en">\n<head>\n    <title>My Page</title>\n    <link rel="stylesheet" href="styles.css">\n</head>\n<body>\n    <h1>Hello World</h1>\n    <script src="script.js"></script>\n</body>\n</html>');
+            this.addFile('styles.css', 'body {\n    font-family: sans-serif;\n    padding: 2rem;\n    background-color: #f0f0f0;\n}\nh1 {\n    color: #4daafc;\n}');
+            this.addFile('script.js', 'console.log("Hello from JavaScript!");\n');
             this.activeFile = 'index.html';
         } else if (mode === 'python') {
             this.addFile('main.py', 'print("Hello from Python!")');

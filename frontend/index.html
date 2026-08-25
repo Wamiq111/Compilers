@@ -4,144 +4,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Compiler with VS Code Explorer</title>
+    <title>Home | CompilerIDE</title>
+    <meta name="description"
+        content="Online Compiler Platform supporting HTML, CSS, JavaScript and Python. Code anywhere, instantly.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/pages.css">
 </head>
 
-<body class="theme-dark">
-    <div class="app-container">
-        <!-- Header / Toolbar -->
-        <header class="app-header">
-            <div class="logo">Compiler<span class="highlight">IDE</span></div>
+<body class="theme-dark page-static">
+    <nav class="page-nav">
+        <a href="index.html" class="logo menu-link">Compiler<span class="highlight">IDE</span></a>
+        <div class="page-nav-links">
+            <a href="index.html" class="menu-link active">Home</a>
+            <a href="about.html" class="menu-link">About</a>
+            <a href="contact.html" class="menu-link">Contact</a>
+            <a href="privacy.html" class="menu-link">Privacy</a>
+            <a href="terms.html" class="menu-link">Terms</a>
+            <a href="advertise.html" class="menu-link">Advertise</a>
+            <button id="theme-toggle" class="theme-toggle-btn" title="Toggle Theme">
+                <svg class="theme-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 0 1-4.4 2.26 5.403 5.403 0 0 1-3.14-9.8c-.44-.06-.9-.1-1.36-.1z" />
+                </svg>
+            </button>
+            <a href="compiler.html" class="btn-editor menu-link">Open Editor</a>
+        </div>
+    </nav>
 
-            <div class="editor-tabs" id="editor-tabs">
-                <!-- Dynamic tabs will go here, hardcoded for now -->
-            </div>
+    <!-- Hero Section -->
+    <div class="home-container">
+        <h1 class="hero-title">Code <span class="gradient">Anywhere</span></h1>
+        <p class="hero-subtitle">The ultimate browser-based coding environment. Choose your stack and start building
+            instantly — no setup, no installs, just code.</p>
 
-            <div class="header-actions">
-                <select id="lang-selector" class="lang-selector" title="Select Project Type"
-                    style="margin-right: 15px; padding: 5px; border-radius: 4px; background: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border-color);">
-                    <option value="web">Web (HTML/CSS/JS)</option>
-                    <option value="python">Python</option>
-                </select>
-                <button id="btn-format" class="btn" title="Format Code">Format</button>
-                <button id="btn-run" class="btn btn-primary" title="Run Code">Run</button>
-                <button id="btn-stop" class="btn btn-danger" disabled title="Stop Execution">Stop</button>
-                <button id="btn-clear" class="btn" title="Clear Editor">Clear</button>
-                <button id="btn-copy" class="btn" title="Copy Code">Copy</button>
-                <button id="btn-download" class="btn" title="Download Code">Download</button>
-                <div class="theme-toggle">
-                    <label class="switch" title="Toggle Theme">
-                        <input type="checkbox" id="theme-switch" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-        </header>
-
-        <!-- Main Workspace -->
-        <main class="app-workspace">
-            <!-- Activity Bar (VS Code style) -->
-            <div class="activity-bar">
-                <button class="activity-action active" id="act-explorer" title="Explorer">📂</button>
-                <button class="activity-action" id="act-search" title="Search">🔍</button>
-            </div>
-
-            <!-- Sidebar (File Explorer / Search Panes) -->
-            <aside class="sidebar-pane" id="sidebar-pane">
-                <!-- Explorer View -->
-                <div class="sidebar-view" id="view-explorer">
-                    <div class="sidebar-header">
-                        <span class="sidebar-title">Explorer</span>
-                        <div class="sidebar-actions">
-                            <button id="btn-new-file" title="New File" class="icon-btn">📄</button>
-                            <button id="btn-new-folder" title="New Folder" class="icon-btn">📁</button>
-                        </div>
-                    </div>
-                    <div class="sidebar-content">
-                        <div id="file-tree" class="file-tree"></div>
-                    </div>
-                </div>
-
-                <!-- Search View -->
-                <div class="sidebar-view hidden" id="view-search">
-                    <div class="sidebar-header">
-                        <span class="sidebar-title">Search</span>
-                    </div>
-                    <div class="sidebar-content">
-                        <div class="search-box">
-                            <input type="text" id="file-search-input" placeholder="Search across files...">
-                        </div>
-                        <div id="search-results" class="file-tree"></div>
-                    </div>
-                </div>
-            </aside>
-
-            <div class="resizer resizer-h" id="resizer-sidebar"></div>
-
-            <!-- Left Pane: Editor -->
-            <section class="pane editor-pane" id="editor-pane">
-                <div id="monaco-container" class="monaco-container">
-                    <div class="editor-loader">Loading Editor...</div>
-                </div>
-            </section>
-
-            <!-- Resizer -->
-            <div class="resizer resizer-h" id="resizer-main"></div>
-
-            <!-- Right Pane: Preview + Console -->
-            <section class="pane right-pane" id="right-pane">
-                <div class="preview-toolbar">
-                    <span class="preview-title">Live Preview</span>
-                    <div class="preview-controls">
-                        <button id="btn-refresh-preview" class="btn btn-small">Refresh</button>
-                        <label class="checkbox-label" title="Run preview on change (debounced)">
-                            <input type="checkbox" id="live-preview-toggle" checked> Auto Run
-                        </label>
-                    </div>
-                </div>
-
-                <div class="preview-container" id="preview-container">
-                    <!-- Iframe injected via JS -->
-                </div>
-
-                <!-- Resizer for Console -->
-                <div class="resizer resizer-v" id="resizer-console"></div>
-
-                <div class="console-pane" id="console-pane">
-                    <div class="console-header">
-                        <span class="console-title">Console / Problems</span>
-                        <button id="btn-clear-console" class="btn btn-small">Clear</button>
-                    </div>
-                    <div class="console-output" id="console-output"></div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Status Bar / Footer -->
-        <footer class="app-footer">
-            <div class="footer-left">
-                <span>CompilerIDE Local Workspace</span>
-            </div>
-            <div class="footer-right">
-                <a href="about.html" target="_blank">About Us</a>
-                <a href="contact.html" target="_blank">Contact Us</a>
-                <a href="privacy.html" target="_blank">Privacy Policy</a>
-                <a href="terms.html" target="_blank">Terms & Conditions</a>
-                <a href="advertise.html" target="_blank">Advertise</a>
-            </div>
-        </footer>
+        <div class="compiler-cards">
+            <a href="compiler.html?lang=web" class="compiler-card">
+                <div class="card-icon">🌐</div>
+                <h3 class="card-title">Web Stack</h3>
+                <p class="card-desc">Build with HTML, CSS, and JavaScript. See your results instantly in a live preview
+                    panel.</p>
+            </a>
+            <a href="compiler.html?lang=python" class="compiler-card">
+                <div class="card-icon">🐍</div>
+                <h3 class="card-title">Python</h3>
+                <p class="card-desc">Write and execute Python code directly in the browser using Pyodide. No server
+                    needed.</p>
+            </a>
+        </div>
     </div>
 
-    <!-- Main App -->
-    <script type="module" src="js/app.js"></script>
+    <!-- Features Section -->
+    <section class="features-section">
+        <h2>Why <span class="gradient">CompilerIDE</span>?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <h3>Instant Setup</h3>
+                <p>No downloads, no configuration. Open your browser and start coding within seconds.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">👁️</div>
+                <h3>Live Preview</h3>
+                <p>See your HTML, CSS, and JS changes rendered in real-time with our debounced live preview engine.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📁</div>
+                <h3>File Explorer</h3>
+                <p>A VS Code-inspired file tree with create, rename, and delete support for a familiar workflow.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎨</div>
+                <h3>Monaco Editor</h3>
+                <p>Powered by the same editor that drives VS Code. Enjoy syntax highlighting, IntelliSense, and more.
+                </p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🌙</div>
+                <h3>Dark & Light Themes</h3>
+                <p>Switch between beautifully crafted dark and light themes that persist across the entire platform.</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">📦</div>
+                <h3>Download & Share</h3>
+                <p>Export your project files with one click. Copy code to clipboard or download for offline use.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Start Coding?</h2>
+        <p>Jump into the editor and bring your ideas to life — completely free, completely in the browser.</p>
+        <a href="compiler.html" class="cta-btn">Launch Editor →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="footer-left">
+            <span>&copy; 2026 CompilerIDE. All rights reserved.</span>
+        </div>
+        <div class="footer-right">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="advertise.html">Advertise</a>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
 </body>
 
 </html>
