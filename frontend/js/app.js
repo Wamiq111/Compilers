@@ -92,10 +92,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Parse URL path to initialize the correct language workspace
     let initialLang = 'web';
     const currentPath = window.location.pathname;
-    if (currentPath.includes('python-compiler') || urlParams.get('lang') === 'python') {
+    if (currentPath.includes('python-compiler')) {
         initialLang = 'python';
-    } else if (currentPath.includes('html-compiler') || urlParams.get('lang') === 'web') {
-        initialLang = 'web';
     }
 
     if (langSelector) {
