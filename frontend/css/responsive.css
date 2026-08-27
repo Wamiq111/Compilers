@@ -1,14 +1,13 @@
 /* Mobile and tablet mode */
 @media (max-width: 768px) {
     .app-container {
-        height: 100vh;
-        /* Keep it bounded to viewport */
-        min-height: 0;
+        height: auto;
+        min-height: 100vh;
     }
 
     .app-workspace {
         flex-direction: column;
-        overflow-y: auto;
+        overflow-y: visible;
         flex: 1;
     }
 
@@ -51,20 +50,20 @@
 
     /* Stack editor and preview on mobile */
     .editor-pane {
-        flex: 1 1 50%;
+        flex: none;
         width: 100%;
-        min-height: 40vh;
+        min-height: 50vh;
     }
 
     .monaco-container {
-        min-height: 35vh;
+        min-height: 45vh;
         /* Ensure editor takes up safe space */
     }
 
     .right-pane {
-        flex: 1 1 50%;
+        flex: none;
         width: 100%;
-        min-height: 40vh;
+        min-height: 50vh;
         border-top: 2px solid var(--border-color);
         display: flex;
         flex-direction: column;
