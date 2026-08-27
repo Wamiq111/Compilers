@@ -12,10 +12,36 @@
         flex: 1;
     }
 
-    .activity-bar,
+    .activity-bar {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        padding-top: 0;
+        justify-content: space-evenly;
+    }
+
+    .activity-action {
+        width: auto;
+        flex: 1;
+        height: 48px;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+    }
+
+    .activity-action.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--text-highlight);
+    }
+
     .sidebar-pane {
-        display: none !important;
-        /* Hide sidebar for cleaner mobile view */
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+        max-height: 250px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .resizer-h,
