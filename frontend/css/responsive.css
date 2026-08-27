@@ -39,9 +39,9 @@
         width: 100%;
         max-width: 100%;
         flex: none;
-        max-height: 250px;
+        height: 200px;
         border-right: none;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 2px solid var(--border-color);
     }
 
     .resizer-h,
