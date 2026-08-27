@@ -1,75 +1,96 @@
 /* Mobile and tablet mode */
 @media (max-width: 768px) {
     .app-container {
-        height: auto;
-        min-height: 100vh;
+        height: 100vh;
+        /* Keep it bounded to viewport */
+        min-height: 0;
     }
 
     .app-workspace {
         flex-direction: column;
         overflow-y: auto;
-    }
-
-    .activity-bar {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        padding-top: 0;
-        justify-content: space-evenly;
-    }
-
-    .activity-action {
-        width: auto;
         flex: 1;
-        height: 48px;
-        border-left: none;
-        border-bottom: 2px solid transparent;
     }
 
-    .activity-action.active {
-        border-left-color: transparent;
-        border-bottom-color: var(--text-highlight);
-    }
-
+    .activity-bar,
     .sidebar-pane {
-        width: 100%;
-        max-width: 100%;
-        flex: none;
-        max-height: 250px;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
+        display: none !important;
+        /* Hide sidebar for cleaner mobile view */
     }
 
     .resizer-h,
     .resizer-v {
-        display: none;
+        display: none !important;
     }
 
     /* Stack editor and preview on mobile */
     .editor-pane {
-        flex: none;
+        flex: 1 1 50%;
         width: 100%;
-        min-height: 50vh;
+        min-height: 40vh;
+    }
+
+    .monaco-container {
+        min-height: 35vh;
+        /* Ensure editor takes up safe space */
     }
 
     .right-pane {
-        flex: none;
+        flex: 1 1 50%;
         width: 100%;
-        min-height: 50vh;
-        border-top: 1px solid var(--border-color);
+        min-height: 40vh;
+        border-top: 2px solid var(--border-color);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .preview-container {
+        flex: 1;
+        min-height: 250px;
+    }
+
+    .console-pane {
+        flex: none;
+        height: 150px;
+        /* fixed height for console on mobile */
+    }
+
+    .app-header {
+        flex-direction: column;
+        height: auto;
+        padding: 8px 12px;
+        align-items: stretch;
+    }
+
+    .editor-tabs {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 8px;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .header-actions {
         flex-wrap: wrap;
-        justify-content: flex-end;
+        justify-content: space-between;
+        width: 100%;
     }
 
     .header-actions .btn {
-        padding: 4px 8px;
-        font-size: 0.75rem;
+        padding: 6px 10px;
+        font-size: 0.8rem;
         margin: 2px;
+        flex: 1;
+        text-align: center;
+    }
+
+    #lang-selector {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .theme-toggle-container {
+        margin-left: 0;
     }
 
     .logo {
@@ -77,6 +98,12 @@
     }
 
     .tab {
-        padding: 6px 10px;
+        padding: 8px 12px;
+        white-space: nowrap;
+    }
+
+    .app-footer {
+        display: none !important;
+        /* Hide footer to save space */
     }
 }
